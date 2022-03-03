@@ -15,5 +15,7 @@ namespace BlogPessoal.Web.Models
         public string Nome { get; set; }
         [Display(Name = "Descriçao")]
         public string Descricao { get; set; }
+
+        public virtual ICollection<Artigo> Artigos { get; set; }
     }
 }
