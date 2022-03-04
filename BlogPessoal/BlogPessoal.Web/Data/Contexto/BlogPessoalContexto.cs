@@ -16,10 +16,14 @@ namespace BlogPessoal.Web.Data.Contexto
         }
 
         public DbSet<CategoriaDeArtigo> CategoriasDeArtigo { get; set; }
+        public DbSet<Artigo> Artigos { get; set; }
+        public DbSet<Autor> Autores { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new CategoriaDeArtigoMap());
+            modelBuilder.Configurations.Add(new ArtigoMap());
+            modelBuilder.Configurations.Add(new AutorMap());
             base.OnModelCreating(modelBuilder);
         }
     }
