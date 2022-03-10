@@ -11,6 +11,7 @@ using BlogPessoal.Web.Models;
 
 namespace BlogPessoal.Web.Controllers
 {
+    [Authorize]
     public class AutoresController : Controller
     {
         private BlogPessoalContexto db = new BlogPessoalContexto();

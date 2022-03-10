@@ -1,4 +1,5 @@
 ﻿using BlogPessoal.Web.Data.Contexto;
+using BlogPessoal.Web.Filtros;
 using BlogPessoal.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -76,6 +77,21 @@ namespace BlogPessoal.Web.Controllers
             _ctx.CategoriasDeArtigo.Remove(categoria);
             _ctx.SaveChanges();
             return RedirectToAction("Index");
+        }
+        [AllowAnonymous]
+        //[ExibirArtigosActionFilter]
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var categoria = _ctx.CategoriasDeArtigo.Find(id);
+            if (categoria == null)
+            {
+                return HttpNotFound();
+            }
+            return View(categoria);
         }
     }
 }
